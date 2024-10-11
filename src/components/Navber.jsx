@@ -10,10 +10,14 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { useContext } from "react";
+import { ShopContext } from "@/context/ShopContext";
 
 const Navber = () => {
+  const { showSearch, setShowSearch } = useContext(ShopContext);
+
   return (
-    <div className="flex items-center justify-between py-5 font-medium">
+    <div className="flex items-center gap-5 justify-between py-5 font-medium">
       <Link to="/" className="w-36 overflow-hidden">
         <img
           className="w-full h-full object-cover"
@@ -22,7 +26,7 @@ const Navber = () => {
         />
       </Link>
 
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
+      <ul className="hidden sm:flex gap-3 md:gap-5 text-sm text-gray-700">
         {/* HOME */}
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <h3 className="uppercase">Home</h3>
@@ -48,8 +52,9 @@ const Navber = () => {
         </NavLink>
       </ul>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 md:gap-6">
         <img
+          onClick={() => setShowSearch(!showSearch)}
           src={assets.search_icon}
           className="w-5 cursor-pointer"
           alt="search icon"
