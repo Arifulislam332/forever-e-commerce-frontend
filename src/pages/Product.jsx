@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
@@ -85,7 +85,10 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <Button className="bg-black hover:bg-black uppercase rounded-none text-sm active:bg-gray-700">
+          <Button
+            onClick={() => addToCart(productData._id, size)}
+            className="bg-black hover:bg-black uppercase rounded-none text-sm active:bg-gray-700"
+          >
             Add to cart
           </Button>
           <Separator className="mt-8 sm:w-4/5" />
