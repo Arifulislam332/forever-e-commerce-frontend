@@ -12,6 +12,10 @@ a.active > hr {
   font-family: Outfit;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .prata__regular {
   font-family: "Prata", serif;
   font-weight: 400;
