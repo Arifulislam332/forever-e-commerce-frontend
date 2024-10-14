@@ -1,12 +1,21 @@
+"use-client";
+
 import { assets } from "@/assets/assets";
 import CartTotal from "@/components/CartTotal";
 import Title from "@/components/Title";
+import { Button } from "@/components/ui/button";
 import { ShopContext } from "@/context/ShopContext";
 import { useContext, useEffect, useState } from "react";
 
 const Cart = () => {
-  const { products, currency, cartItems, updateQuantity } =
-    useContext(ShopContext);
+  const {
+    products,
+    currency,
+    cartItems,
+    updateQuantity,
+    getCartAmount,
+    navigate,
+  } = useContext(ShopContext);
 
   const [cartData, setCartData] = useState([]);
 
@@ -88,8 +97,18 @@ const Cart = () => {
         })}
       </div>
       <div className="flex justify-end my-20">
-        <div className="w-full sm:w-[450px]">
+        <div className="w-full flex flex-col sm:w-[450px]">
           <CartTotal />
+          <div className="w-full justify-end flex text-end">
+            <Button
+              onClick={() => navigate("/place-order")}
+              className={`bg-black text-sm my-8 text-center hover:bg-gray-700 uppercase rounded-none ${
+                getCartAmount() > 0 ? "block" : "hidden"
+              }`}
+            >
+              Process to checkout
+            </Button>
+          </div>
         </div>
       </div>
     </div>

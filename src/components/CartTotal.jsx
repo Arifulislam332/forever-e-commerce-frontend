@@ -2,7 +2,6 @@ import { ShopContext } from "@/context/ShopContext";
 import { useContext } from "react";
 import Title from "./Title";
 import { Separator } from "./ui/separator";
-import { Button } from "./ui/button";
 
 const CartTotal = () => {
   const { currency, delivery_fee, getCartAmount } = useContext(ShopContext);
@@ -40,9 +39,6 @@ const CartTotal = () => {
           </p>
         </div>
       </div>
-      <Button className="bg-black mt-5 w-full text-center hover:bg-gray-700 uppercase rounded-none">
-        Process to checkout
-      </Button>
     </div>
   );
 };
